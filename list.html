@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of users</title>
+    <link rel="stylesheet" href="list.css">
+</head>
+<body>
+<h2>List of employees</h2>
+<div class="title">
+    <span>First name</span>
+    <span>Last name</span>
+    <span>Salary</span>
+    <span>Position</span>
+</div>
+<ul class="employeeList">
+
+</ul>
+<h3>Add new employee</h3>
+<form>
+    <input type="text" id="firstname" size="40" placeholder="First name" />
+    <input type="text" id="lastname" size="40" placeholder="Last name" />
+    <input type="number" id="salary" size="40" placeholder="Salary" />
+    <input type="text" id="position" size="40" placeholder="Position" />
+</form>
+<button class="addEmployee">Add New employee </button>
+<div>Total number of employees: <span id="totalNumber"></span></div>
+<div>Total salary: <span id="totalSalary"></span></div>
+<div>Average salary: <span id="averageSalary"></span></div>
+<div>
+    <label>
+        Limit of employees: <input type="number" id="limit" min="0"><button class="setLimit">Set</button>
+    </label>
+</div>
+
+<script src="list.js"></script>
+</body>
+</html>
