@@ -36,16 +36,16 @@ function valid(e) {
     var dateVal = document.getElementsByTagName("form")[0].elements.namedItem("date").value;
 
     var regexName = /^user_/g;
-    var regexAge = /\d/g;
-    var regexDate = /(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20)\d\d/g;
+    var regexAge = /^[1-9]\d*$/g;
+    var regexDate = /(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(10|11|12|13|14|15|16|17|18|19|20)\d\d/g;
 
     if(!regexName.test(nameVal))
         alert ('your name is invalid');
 
-    if(!regexAge.test(ageVal))
+    else if(!regexAge.test(ageVal))
         alert ('your age is invalid');
 
-    if(!regexDate.test(dateVal))
+    else if(!regexDate.test(dateVal))
         alert ('your date is invalid');
     else alert ('All are valid');
 }

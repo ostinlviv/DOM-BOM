@@ -92,15 +92,7 @@ button.addEventListener('click', function getTarget() {
         }
 
     }
-
-
-
-
-
-
-
-
-
+    document.getElementById("form").reset();
 });
 
 
