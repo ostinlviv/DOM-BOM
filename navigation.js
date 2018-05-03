@@ -25,10 +25,17 @@ document.body.onkeydown = function (e) {
     else if (e.keyCode === KEYCODE_DOWN) {
         el.style.top = (parseInt(el.style.left) + 10) + 'px';
     }
-    else if (e.keyCode === KEYCODE_SPACE) {
-        el.style.background = 'yellow';
-    }
-    else if (e.keyCode === KEYCODE_ENTER) {
-        el.style.background = 'green';
+    else if ((e.keyCode === KEYCODE_SPACE) || (e.keyCode === KEYCODE_ENTER)) {
+        var $bullet = document.createElement('div');
+        $bullet.classList.add('bullet');
+        document.body.appendChild($bullet);
+        $bullet.style.top = (parseInt(el.style.top)) + 'px';
+        $bullet.style.left = (parseInt(el.style.left)) + 'px';
+        setTimeout(function() {
+      	   $bullet.classList.add('move');
+        }, 0);
+        setTimeout(function() {
+    	     document.body.removeChild($bullet);
+        }, 1000);
     }
 }
