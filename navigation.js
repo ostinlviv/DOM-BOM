@@ -20,10 +20,10 @@ document.body.onkeydown = function (e) {
         el.style.left = (parseInt(el.style.left) + 10) + 'px';
     }
     else if (e.keyCode === KEYCODE_UP) {
-        el.style.top = (parseInt(el.style.left) - 10) + 'px';
+        el.style.top = (parseInt(el.style.top) - 10) + 'px';
     }
     else if (e.keyCode === KEYCODE_DOWN) {
-        el.style.top = (parseInt(el.style.left) + 10) + 'px';
+        el.style.top = (parseInt(el.style.top) + 10) + 'px';
     }
     else if ((e.keyCode === KEYCODE_SPACE) || (e.keyCode === KEYCODE_ENTER)) {
         var $bullet = document.createElement('div');

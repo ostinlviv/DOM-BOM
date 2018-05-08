@@ -4,12 +4,33 @@ h1 {
 
 .content {
     background: blue;
-    height: 350px;
+    height: 500px;
+    position: relative;
+}
+
+.parallax-section {
+
+    position: relative;
+    height: 150px;
+    overflow: hidden;
 }
 
 #parallax {
-    background: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
 
-    background: url(http://www.verticalworld.net/school/programs/uploads/pics/program_108_1.jpg);
-    height: 150px;
+#parallax img {
+    position: absolute;
+
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+
 }
