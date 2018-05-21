@@ -1,26 +1,16 @@
-var newForm = document.createElement('form');
-newForm.setAttribute("name", "login");
-newForm.setAttribute("action", "google.com");
+const elFactory = (type, attributes) => {
+    const el = document.createElement(type);
+    for (let key in attributes) {
+        el.setAttribute(key, attributes[key])
+    }
+    return el
+};
 
-var newInputAge = document.createElement('input');
-newInputAge.setAttribute("type", "text");
-newInputAge.setAttribute("name", "age");
-newInputAge.setAttribute("placeholder", "Age");
-
-var newInputUsername = document.createElement('input');
-newInputUsername.setAttribute("type", "text");
-newInputUsername.setAttribute("name", "username");
-newInputUsername.setAttribute("placeholder", "Username (user_***)");
-
-var newInputDate = document.createElement('input');
-newInputDate.setAttribute("type", "text");
-newInputDate.setAttribute("name", "date");
-newInputDate.setAttribute("placeholder", "Date (dd/mm/yyyy)");
-
-var newInputSubmit = document.createElement('input');
-newInputSubmit.setAttribute("type", "submit");
-newInputSubmit.setAttribute("value", "Validate Me");
-
+const newForm = elFactory('form', {name: 'login', action: 'google.com'});
+const newInputAge = elFactory('input', {type: 'text', name: 'age', placeholder: 'Age'});
+const newInputUsername = elFactory('input', {type: 'text', name: 'username', placeholder: 'Username (user_***)'});
+const newInputDate = elFactory('input', {type: 'text', name: 'date', placeholder: 'Date (dd/mm/yyyy)'});
+const newInputSubmit = elFactory('input', {type: 'submit', value: 'Validate Me'});
 
 document.body.appendChild(newForm);
 newForm.appendChild(newInputAge);
@@ -31,13 +21,15 @@ newForm.appendChild(newInputSubmit);
 function valid(e) {
     e.preventDefault();
 
-    var nameVal = document.getElementsByTagName("form")[0].elements.namedItem("username").value;
-    var ageVal = document.getElementsByTagName("form")[0].elements.namedItem("age").value;
-    var dateVal = document.getElementsByTagName("form")[0].elements.namedItem("date").value;
+    const nameVal = document.getElementsByTagName("form")[0].elements.namedItem("username").value;
+    const ageVal = document.getElementsByTagName("form")[0].elements.namedItem("age").value;
+    const dateVal = document.getElementsByTagName("form")[0].elements.namedItem("date").value;
 
-    var regexName = /^user_/g;
-    var regexAge = /^[0-9]\d*$/g;
-    var regexDate = /(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(10|11|12|13|14|15|16|17|18|19|20)\d\d/g;
+    const regexName = /^user_/g;
+    const regexAge = /^[0-9]\d*$/g;
+
+    const date = new Date();
+    const currentDate = date.getDate() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear();
 
     if(!regexName.test(nameVal))
         alert ('your name is invalid');
@@ -45,7 +37,7 @@ function valid(e) {
     else if(!regexAge.test(ageVal))
         alert ('your age is invalid');
 
-    else if(!regexDate.test(dateVal))
+    else if(currentDate !== dateVal)
         alert ('your date is invalid');
     else alert ('All are valid');
 }

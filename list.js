@@ -60,12 +60,21 @@ set.addEventListener('click', function getLimit() {
 });
 
 button.addEventListener('click', function getTarget() {
-    var jsFirstNameInput = document.getElementById('firstname').value;
-    var jsLastNameInput = document.getElementById('lastname').value;
-    var jsSalaryInput = document.getElementById('salary').value;
-    var jsPositionInput = document.getElementById('position').value;
+    if (typeof document.getElementById('firstname').value === 'string') {
+        var jsFirstNameInput = document.getElementById('firstname').value;
+    }
+    if (typeof document.getElementById('lastname').value === 'string') {
+        var jsLastNameInput = document.getElementById('lastname').value;
+    }
+    if (typeof document.getElementById('salary').value === 'string') {
+        var jsSalaryInput = document.getElementById('salary').value;
+    }
+    if (typeof document.getElementById('position').value === 'string') {
+        var jsPositionInput = document.getElementById('position').value;
+    }
     var limit = +totalNumber.innerHTML;
-    var avs = +(document.querySelector('#averageSalary').innerHTML);
+    var averageSalary = +(document.querySelector('#averageSalary').innerHTML);
+    var averageSalaryLimit = 2000;
 
     if (firstNameDb.includes(document.getElementById('firstname').value) && lastNameDb.includes(document.getElementById('lastname').value)){
         alert ('This user exists');
@@ -76,7 +85,7 @@ button.addEventListener('click', function getTarget() {
             document.getElementById('position').value === '') {
             alert("Please, fill in all fields");
         } else {
-            if (avs < 2000) {
+            if (averageSalary < averageSalaryLimit) {
                 if (newLimit !== null) {
                     if (limit < newLimit){
                         new Employee(jsFirstNameInput, jsLastNameInput, jsSalaryInput, jsPositionInput).addHtmlEmployee();
